@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <!-- Work with TextView -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/text_from_xml"
+        android:text="Text from xml"
+        android:textSize="25sp"
+        android:textColor="#000000"
+        android:background="#BBBBBB"
+        android:textStyle="italic"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:autoLink="all"/>
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:id="@+id/text_from_code"
+        tools:ignore="MissingConstraints" />
+
+
+    <!-- Work with EditText -->
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/edit_text1"
+        android:hint="One-liner text"
+        android:inputType="text"
+        app:layout_constraintTop_toBottomOf="@id/text_from_xml"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/edit_text2"
+        android:hint="Multiline text"
+        android:inputType="textMultiLine"
+        app:layout_constraintTop_toBottomOf="@id/edit_text1"/>
+
+
+    <!-- Work with Button -->
+    <Button
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/button_from_xml"
+        android:text="Enter (xml)"
+        app:layout_constraintTop_toBottomOf="@id/edit_text2"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+    <EditText
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/edit_text_under_xml_button"
+        app:layout_constraintTop_toBottomOf="@id/button_from_xml"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+    <Button
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:id="@+id/button_from_code"
+        tools:ignore="MissingConstraints" />
+
+    <EditText
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:id="@+id/edit_text_under_code_button"
+        tools:ignore="MissingConstraints" />
+
+
+    <!-- Work with Toast -->
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/toast_button"
+        android:text="Click for toast"
+        app:layout_constraintTop_toBottomOf="@id/edit_text_under_xml_button"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+
+    <!-- Work with Snackbar -->
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/snackbar_button"
+        android:text="Click for snackbar"
+        app:layout_constraintTop_toBottomOf="@id/toast_button"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+
+    <!-- Work with CheckBox -->
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="First CheckBox"
+        android:textSize="20sp"
+        android:id="@+id/first_checkbox"
+        app:layout_constraintTop_toBottomOf="@id/snackbar_button"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Second CheckBox"
+        android:textSize="20sp"
+        android:id="@+id/second_checkbox"
+        app:layout_constraintTop_toBottomOf="@id/first_checkbox"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Choice result"
+        android:id="@+id/ckeckbox_button"
+        app:layout_constraintTop_toBottomOf="@id/second_checkbox"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+
+    <!-- Work with ToggleButton -->
+    <ToggleButton
+        android:id="@+id/toggle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textOn="Turned on"
+        android:textOff="Turned off"
+        android:onClick="onToggleClicked"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/ckeckbox_button" />
+
+
+        
+
+</androidx.constraintlayout.widget.ConstraintLayout>

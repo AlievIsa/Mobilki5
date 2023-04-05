@@ -14,8 +14,12 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
+import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.RadioGroup;
+import android.widget.SeekBar;
 import android.widget.TextView;
+import android.widget.TimePicker;
 import android.widget.Toast;
 import android.widget.ToggleButton;
 
@@ -120,7 +124,7 @@ public class MainActivity extends AppCompatActivity {
         // Working with Checkbox
         CheckBox firstCheckBox = findViewById(R.id.first_checkbox);
         CheckBox secondCheckBox = findViewById(R.id.second_checkbox);
-        Button checkBoxButton = findViewById(R.id.ckeckbox_button);
+        Button checkBoxButton = findViewById(R.id.checkbox_button);
         checkBoxButton.setOnClickListener(view -> {
             Toast.makeText(this,
                     firstCheckBox.getText() + ": " + firstCheckBox.isChecked() + '\n'
@@ -129,7 +133,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-        // OnCheckedChangeListener
+        // OnCheckedChangeListener with CheckBox
         firstCheckBox.setOnCheckedChangeListener
                 (new CompoundButton.OnCheckedChangeListener() {
                     @Override
@@ -155,7 +159,74 @@ public class MainActivity extends AppCompatActivity {
                 });
 
 
+        // Working with RadioBox
+        RadioGroup radGrp = (RadioGroup) findViewById(R.id.radios);
+        radGrp.setOnCheckedChangeListener
+                (new RadioGroup.OnCheckedChangeListener() {
+                    @Override
+                    public void onCheckedChanged(RadioGroup radioGroup, int id) {
+                        TextView selection = findViewById(R.id.selection);
+                        switch(id) {
+                            case R.id.java:
+                                selection.setText("Selected Java");
+                                break;
+                            case R.id.kotlin:
+                                selection.setText("Selected Kotlin");
+                                break;
+                            default:
+                                break;
+                        }
+                    }
+                });
+
+
+        // Working with DatePicker
+        TextView dateTextView = findViewById(R.id.datepicker_textview);
+        DatePicker datePicker = findViewById(R.id.datepicker);
+        datePicker.init(2023, 04, 01, new DatePicker.OnDateChangedListener() {
+            @Override
+            public void onDateChanged(DatePicker view, int year, int monthOfYear,
+                                      int dayOfMonth) {
+                // Отсчет месяцев начинается с нуля. Для отображения добавляем 1.
+                dateTextView.setText("Дата: " + view.getDayOfMonth() + "/" +
+                        (view.getMonth() + 1) + "/" + view.getYear());
+            }
+        });
+
+
+        // Working with TimePicker
+        TextView timeTextView = findViewById(R.id.timepicker_textview);
+        TimePicker timePicker = findViewById(R.id.timepicker);
+        timePicker.setOnTimeChangedListener(
+                new TimePicker.OnTimeChangedListener() {
+                    @Override
+                    public void onTimeChanged(TimePicker timePicker,  int hourOfDay, int minute) {
+                        timeTextView.setText("Время: " + hourOfDay + ":" + minute);
+                    }
+                }
+        );
+
+
+        // Working with SeekBar
+        TextView sbTextView = findViewById(R.id.seekbar_textview);
+        SeekBar seekBar = findViewById(R.id.seekbar);
+        seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean b) {
+                sbTextView.setText(String.valueOf(progress));
+            }
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+
+            }
+        });
     }
+
+
 
     // Working with ToggleButton
     public void onToggleClicked(View view) {
@@ -164,10 +235,8 @@ public class MainActivity extends AppCompatActivity {
             Toast.makeText(this, "Turned on",
                     Toast.LENGTH_LONG).show();
         } else {
-            // действия, если выключена
             Toast.makeText(this, "Turned off",
                     Toast.LENGTH_LONG).show();
         }
-
     }
 }
